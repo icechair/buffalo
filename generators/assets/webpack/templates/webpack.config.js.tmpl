@@ -102,7 +102,7 @@ module.exports = {
 
 if (PROD != "development") {
   module.exports.plugins.push(
-    new webpack.optimize.UglifyJsPlugin({
+    new UglifyJsPlugin({
       beautify: false,
       mangle: {
         screw_ie8: true,
