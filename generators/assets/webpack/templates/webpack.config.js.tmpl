@@ -1,6 +1,6 @@
 // add both event handler so the node process breaks early to see build errors early. 
 // useful for example if you bump npm package versions and there are breaking api changes
-process.on("unhandeledRejection", up => { throw up });
+process.on("unhandledRejection", up => { throw up });
 process.on("warning", up => { throw up });
 var webpack = require("webpack");
 var glob = require("glob");
