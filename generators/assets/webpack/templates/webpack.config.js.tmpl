@@ -1,3 +1,7 @@
+// add both event handler so the node process breaks early to see build errors early. 
+// useful for example if you bump npm package versions and there are breaking api changes
+process.on("unhandeledRejection", up => { throw up });
+process.on("warning", up => { throw up });
 var webpack = require("webpack");
 var glob = require("glob");
 var CopyWebpackPlugin = require("copy-webpack-plugin");
@@ -5,7 +9,7 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var ManifestPlugin = require("webpack-manifest-plugin");
 var PROD = process.env.NODE_ENV || "development";
 var CleanWebpackPlugin = require("clean-webpack-plugin");
-
+var UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 var entries = {
   application: [
     './node_modules/jquery-ujs/src/rails.js',
